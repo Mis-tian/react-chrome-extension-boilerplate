@@ -8,11 +8,20 @@
 
 > Boilerplate for Chrome Extension React.js project.
 
+[WIP] This is a forked project, the goal is to build a chrome plugin boilerplate with persistent stores with performance in mind.
+
+## TODOs
+ - Implement a background reducer adapter like react-chrome-redux, but instead of resending whole state on every action, send actions and sync stores instead.
+ - Try make background reducers optional
+ - Persist reducers in localStorage with an easy to use api
+ - Make redux-devtools work again
+
 ## Features
 
  - Simple [React](https://github.com/facebook/react)/[Redux](https://github.com/rackt/redux) examples of Chrome Extension Window & Popup & Inject pages
  - Hot reloading React/Redux (Using [Webpack](https://github.com/webpack/webpack) and [React Transform](https://github.com/gaearon/react-transform))
  - Write code with ES2015+ syntax (Using [Babel](https://github.com/babel/babel))
+ - Persistence stores across tabs, popups and windows (Using [react-chrome-redux])
  - E2E tests of Window & Popup & Inject pages (Using [Chrome Driver](https://www.npmjs.com/package/chromedriver), [Selenium Webdriver](https://www.npmjs.com/package/selenium-webdriver))
 
 ## Examples

@@ -5,6 +5,7 @@ function saveState(state) {
 // todos unmarked count
 function setBadge(todos) {
   if (chrome.browserAction) {
+    if (!Array.isArray(todos)) return;
     const count = todos.filter((todo) => !todo.marked).length;
     chrome.browserAction.setBadgeText({ text: count > 0 ? count.toString() : '' });
   }

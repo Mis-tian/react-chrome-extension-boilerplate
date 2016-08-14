@@ -3,6 +3,7 @@ import rootReducer from '../reducers';
 import thunk from 'redux-thunk';
 import storage from '../utils/storage';
 
+
 const enhancer = compose(
   applyMiddleware(thunk),
   storage(),
@@ -11,7 +12,6 @@ const enhancer = compose(
 
 export default function (initialState) {
   const store = createStore(rootReducer, initialState, enhancer);
-
   if (module.hot) {
     module.hot.accept('../reducers', () => {
       const nextRootReducer = require('../reducers');

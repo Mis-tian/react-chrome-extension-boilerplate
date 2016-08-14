@@ -1,3 +1,5 @@
+import { wrapStore } from 'react-chrome-redux';
+/*
 const bluebird = require('bluebird');
 global.Promise = bluebird;
 
@@ -26,7 +28,16 @@ promisifyAll(chrome, [
 promisifyAll(chrome.storage, [
   'local',
 ]);
-
+*/
 require('./background/contextMenus');
 require('./background/inject');
 require('./background/badge');
+
+chrome.storage.local.get('state', obj => {
+  const { state } = obj;
+  const initialState = JSON.parse(state || '{}');
+
+  const createStore = require('../../app/store/configureStore');
+  const store = createStore(initialState);
+  wrapStore(store, { portName: 'exampleApp' });
+});
