@@ -15,6 +15,12 @@ This is a forked project, the goal is to build a chrome plugin boilerplate with 
 
 The example is edited from [Redux](https://github.com/rackt/redux) TodoMVC example.
 
+#### Synced Actions
+
+![Synced](https://raw.githubusercontent.com/xiaobuu/react-chrome-extension-boilerplate/gh-pages/imgs/mainshot.gif)
+
+You can define which actions will be synced by simply add a key on your action
+
 #### Popup
 
 ![Popup](https://cloud.githubusercontent.com/assets/3001525/14128490/dc05e9f8-f653-11e5-9de6-82d1de01844a.gif)
