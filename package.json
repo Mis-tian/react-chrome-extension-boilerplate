@@ -1,5 +1,5 @@
 {
-  "name": "react-chrome-extension-boilerplate",
+  "name": "react-redux-chrome-extension-boilerplate",
   "version": "0.10.0",
   "description": "Boilerplate for Chrome extension React.js project",
   "scripts": {

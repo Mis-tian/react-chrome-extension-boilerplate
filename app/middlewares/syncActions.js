@@ -1,5 +1,4 @@
 function createGlobalMiddleware(portName, key = 'global') {
-  console.log('createAsyncMiddleware');
   return (/* { dispatch, getState } */) => next => action => {
     if (action && action[key]) {
       /*
