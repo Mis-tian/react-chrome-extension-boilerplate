@@ -1,10 +1,10 @@
-function isInjected(tabId) {
-  return chrome.tabs.executeScriptAsync(tabId, {
+function isInjected(tabId, cb) {
+  return chrome.tabs.executeScript(tabId, {
     code: `var injected = window.reactExampleInjected;
       window.reactExampleInjected = true;
       injected;`,
     runAt: 'document_start'
-  });
+  }, cb);
 }
 
 function loadScript(name, tabId, cb) {
@@ -32,11 +32,11 @@ function loadScript(name, tabId, cb) {
 
 const arrowURLs = ['^https://github\\.com'];
 
-chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
+chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   if (changeInfo.status !== 'loading' || !tab.url.match(arrowURLs.join('|'))) return;
 
-  const result = await isInjected(tabId);
-  if (chrome.runtime.lastError || result[0]) return;
-
-  loadScript('inject', tabId, () => console.log('load inject bundle success!'));
+  isInjected(tabId, (result) => {
+    if (chrome.runtime.lastError || result[0]) return;
+    loadScript('inject', tabId, () => console.log('load inject bundle success!'));
+  });
 });
