@@ -3,12 +3,34 @@ import rootReducer from '../reducers';
 import thunk from 'redux-thunk';
 import storage from '../utils/storage';
 
-const middlewares = applyMiddleware(thunk);
-const enhancer = compose(
-  middlewares,
-  storage()
-);
+export default function ({
+  initialState,
+  portIdentifier,
+  isBackground = false,
+  globalKey,
+}) {
+  const portName = portIdentifier + Date.now();
+  let apMiddleware;
+  if (isBackground) {
+    apMiddleware = applyMiddleware(thunk);
+  } else {
+    const syncMiddleware = require('../middlewares/syncActions');
+    const realSync = syncMiddleware.withKeys(portName);
+    apMiddleware = applyMiddleware(thunk, realSync);
+  }
 
-export default function (initialState) {
+  let extraDispatcher;
+
+  if (isBackground) {
+    extraDispatcher = require('../utils/backgroundDispatcher')(portIdentifier, globalKey);
+  } else {
+    extraDispatcher = require('../utils/foregroundDispatcher')(portName);
+  }
+
+  const enhancer = compose(
+    apMiddleware,
+    isBackground ? storage() : nope => nope,
+    extraDispatcher,
+  );
   return createStore(rootReducer, initialState, enhancer);
 }

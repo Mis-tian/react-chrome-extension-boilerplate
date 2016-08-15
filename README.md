@@ -1,27 +1,14 @@
 # React Chrome Extension Boilerplate
 
-[![Build Status](https://travis-ci.org/jhen0409/react-chrome-extension-boilerplate.svg?branch=master)](https://travis-ci.org/jhen0409/react-chrome-extension-boilerplate)
-[![Build status: Windows](https://ci.appveyor.com/api/projects/status/b5xy6ev6oykth0d2/branch/master?svg=true)](https://ci.appveyor.com/project/jhen0409/react-chrome-extension-boilerplate/branch/master)
-[![NPM version](http://img.shields.io/npm/v/react-chrome-extension-boilerplate.svg?style=flat)](https://www.npmjs.com/package/react-chrome-extension-boilerplate)
-[![Dependency Status](https://david-dm.org/jhen0409/react-chrome-extension-boilerplate.svg)](https://david-dm.org/jhen0409/react-chrome-extension-boilerplate)
-[![devDependency Status](https://david-dm.org/jhen0409/react-chrome-extension-boilerplate/dev-status.svg)](https://david-dm.org/jhen0409/react-chrome-extension-boilerplate#info=devDependencies)
+> Boilerplate for Chrome Extension React.js project. With synced actions and reducers support!
 
-> Boilerplate for Chrome Extension React.js project.
-
-[WIP] This is a forked project, the goal is to build a chrome plugin boilerplate with persistent stores with performance in mind.
-
-## TODOs
- - Implement a background reducer adapter like react-chrome-redux, but instead of resending whole state on every action, send actions and sync stores instead.
- - Try make background reducers optional
- - Persist reducers in localStorage with an easy to use api
- - Make redux-devtools work again
+This is a forked project, the goal is to build a chrome plugin boilerplate with synced and perfomant redux stores.
 
 ## Features
-
  - Simple [React](https://github.com/facebook/react)/[Redux](https://github.com/rackt/redux) examples of Chrome Extension Window & Popup & Inject pages
+ - Actions can be synced across active windows! (Insipred by react-chrome-redux)
  - Hot reloading React/Redux (Using [Webpack](https://github.com/webpack/webpack) and [React Transform](https://github.com/gaearon/react-transform))
  - Write code with ES2015+ syntax (Using [Babel](https://github.com/babel/babel))
- - Persistence stores across tabs, popups and windows (Using [react-chrome-redux])
  - E2E tests of Window & Popup & Inject pages (Using [Chrome Driver](https://www.npmjs.com/package/chromedriver), [Selenium Webdriver](https://www.npmjs.com/package/selenium-webdriver))
 
 ## Examples
