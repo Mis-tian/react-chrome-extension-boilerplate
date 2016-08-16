@@ -17,9 +17,9 @@ export default function createBackgroundEnhancer(portIdentifier, globalKey = 'gl
       }
       // send actions to other active pages
       store.dispatch(request.payload);
+      delete request.payload[globalKey];
       for (const [key, port] of ports) {
         if (request.portName === key) continue;
-        delete request.payload[globalKey];
         port.postMessage(request.payload);
       }
     });
